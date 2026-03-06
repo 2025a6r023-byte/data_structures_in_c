@@ -37,14 +37,62 @@ int dequeue(){
 }
 
 int peek(){
+    if(isempty()){
+        printf("queue underflow\n");
+        return -1;
+    }
+    return queue[front];
 
 }
 
 void display(){
+    if(isempty()){
+        printf("\nqueue is empty\n");
+        return;
+    }
+    for(int i=front;i<=rear;i++){
+        printf("%d ",queue[i]);
+    }
 
 }
 
 int main(){
+    int choice,value;
+    while(1){
+        printf("1.enqueue\n");
+        printf("2.dequeue\n");
+        printf("3.peek\n");
+        printf("4.display queue\n");
+        printf("5.exit\n");
+        printf("enter choice: ");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+              printf("enter value: ");
+              scanf("%d",&value);
+              enqueue(value);
+              break;
+            case 2:
+              dequeue();
+              printf("element deleted\n");
+              break;
+            case 3:
+              peek();
+             printf("%d is available in the queue\n",value);
+             break;
+            case 4:
+             display();
+             break;
+            case 5:
+            exit(0);
+             break;
+            default:
+              printf("\ninvalid choice\n");
+
+        }
+
+    }
+
 
     return 0;
 }
