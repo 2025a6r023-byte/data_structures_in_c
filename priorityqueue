@@ -1,0 +1,82 @@
+#include<stdlib.h>
+#include<stdlib.h>
+#define MAX 100
+struct queue(){
+    int data;
+    int priority;
+};
+struct queue pqueue[MAX];
+int front = -1,rear =-1;
+int isfull(){
+    return rear == MAX-1;
+}
+int isempty(){
+    return front == -1;
+}
+void enqueue(int data, int priority){
+    if(isfull()){
+        printf("queue overflow\n");
+        return;
+    }
+    rear++;
+    pqueue[rear].data = data;
+    pqueue[rear].priority = priority;
+    if(front == -1)
+    front = rear;
+    printf("element inserted\n");
+}
+int gethighestpriority(){
+    int max = pqueue[front].priority,index = front;
+    for(int i = front+1; i<=rear;i++){
+        if(pqueue[i].priority> max){
+        max = pqueue[i].priority;
+        index = i;
+    }
+}
+return index;
+
+}
+int dequeue(){
+    if(isempty()){
+        printf("queue underflow\n");
+        return -1;
+    }
+    else if(front == rear){
+        int val = queue[rear].data;
+        front = rear = -1;
+        return val;
+    }
+    int idx = gethighestpriority();
+    int val = pqueue[idx].data;
+    for(int i = idx; i<rear;i++){
+        pqueue[i]=pqueue[i+1];
+    }
+    rear--;
+    return val;
+}
+int peek(){
+        if(isempty()){
+        printf("queue underflow\n");
+        return -1;
+    }
+    int idx = gethighestpriority();
+    int val = pqueue[idx].data;
+    return val;
+}
+void display(){
+     if(isempty()){
+        printf("queue underflow\n");
+        return -1;
+    }
+    for(int i = front;i<=rear;i++){
+        printf("priority: %d --> value: %d\n",pqueue[i].priority,pqueue[i].data);
+    }
+}
+int main(){
+    int choice,value;
+    while(1){
+        printf("1.\n");
+        printf("2.\n");
+        printf("3.\n");
+    }
+}
