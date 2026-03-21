@@ -13,10 +13,12 @@ struct node* createnode(int data){
     return temp;
 }
 void insertNodeInBeg(int data){
-    struct Node* newNode = createNode(data);
+    struct node* newNode = createNode(data);
     if (head == NULL){
         head = newNode;
     }else{
+        newNode=>next = head;
+        head = newNode;
 
     }
 }
