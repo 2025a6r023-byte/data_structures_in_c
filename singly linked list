@@ -13,18 +13,18 @@ struct node* createnode(int data){
     return temp;
 }
 void insertNodeInBeg(int data){
-    struct node* newNode = createNode(data);
+    struct node* newNode = createnode(data);
     if (head == NULL){
         head = newNode;
     }else{
-        newNode=>next = head;
+        newNode->next = head;
         head = newNode;
 
     }
 }
 int main(){
      while(1){
-        printf("\n***Singly linked list***\n")
+        printf("\n***Singly linked list***\n");
         printf("1. insert in beginning\n");
         printf("2. insert at end\n");
         printf("3. insert at specified position\n");
