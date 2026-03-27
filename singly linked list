@@ -74,6 +74,58 @@ void deleteFromBeg(){
         printf("node deleted\n");
     }
 }
+void deleteNodeFromEnd(){
+    if(head == NULL)
+       printf("list is empty\n");
+    else if(head -> next == NULL){//only single node
+        head == NULL;
+    }else{
+        struct node* temp = head;
+        while(temp -> next -> next != NULL){
+            temp = temp -> next;
+        }
+        temp-> next = NULL;
+        printf("Node deleted\n");
+    }
+}
+void deleteNodeFromAnyPos(int pos){
+    if(head == NULL)
+       printf("list is empty\n");
+    else if(pos == 0)
+       deleteNodeFromBeg();
+    else{
+        struct node* temp = head;
+        int i = 0;
+        while(temp != NULL){
+            if(i == pos-1)
+              break;
+              temp = temp -> next;
+              i++;
+        }
+        if(temp == NULL|| temp -> next == NULL)
+          printf("Invalid position\n");
+        else{
+            temp -> next = temp -> next -> next;
+            printf("Node deleted\n");
+        }
+    }
+    
+}
+void search(int value){
+    if(head == NULL)
+       printf("list is empty !!\n");
+    else{
+        struct node* temp = head;
+        while(temp != NULL){
+            if ( temp -> data == value){
+                printf("found\n");
+                return;
+            }
+            temp = temp -> next;
+        }
+        printf("Not found\n");
+    }
+}
 void displaylist(){
     if(head == NULL)
        printf("list is empty !!\n");
@@ -123,15 +175,21 @@ int main(){
                 deleteFromBeg();
                 break;
             case 5:
-                
+                deleteNodeFromEnd();
                 break;
             case 6:
+                printf("enter position: ");
+                scanf("%d",&pos);
+                deleteNodeFromAnyPos(pos);
               
                 break;
             case 7:
                 displaylist();
                 break;
             case 8:
+                printf("enter searching element: ");
+                scanf("%d",&data);
+                search(data);
 
                 break;
             case 9:
