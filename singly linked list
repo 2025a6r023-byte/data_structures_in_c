@@ -66,7 +66,7 @@ void insertNodeAtAnyPos(int data, int pos){
 
     }
 }
-void deleteFromBeg(){
+void deleteNodeFromBeg(){
     if(head == NULL)
       printf("list is empty\n");
     else{
@@ -172,7 +172,7 @@ int main(){
                 insertNodeAtAnyPos(data, pos);
                 break;
             case 4:
-                deleteFromBeg();
+                deleteNodeFromBeg();
                 break;
             case 5:
                 deleteNodeFromEnd();
