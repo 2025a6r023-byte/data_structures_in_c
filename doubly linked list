@@ -103,7 +103,23 @@ void deleteNodeFromEnd(){
     }    
 }
 void deleteNodeFromAnyPos(int pos){
-       
+       if(head == NULL && tail == NULL)
+         printf("list is empty\n");
+        else if(pos == 0)
+          deleteNodeFromBeg();
+        else{
+            struct Node* temp = head;
+            int i = 0;
+            while(temp != NULL &&  i != pos ){
+                temp = temp->next;
+                i++;
+            }
+            if(temp == NULL)
+              printf("invalid position\n");
+            else{
+                
+            }
+        }
 }
 void search(int value){
     
