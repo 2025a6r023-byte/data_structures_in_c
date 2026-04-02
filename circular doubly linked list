@@ -1,0 +1,179 @@
+//circular singly linked list
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+struct Node{
+    int data;
+    struct node* next;
+};
+struct Node* head = NULL;
+struct Node* createNode(int data){
+    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+    temp->data = data;
+    temp->next = NULL;
+    return temp;
+}
+void insertNodeInBeg(int data){
+   struct Node* newNode = createNode(data);
+   if(head == NULL){
+    head = newNode;
+    newNode->next = head;
+   }
+   else{
+    struct Node* temp = head;
+    while(temp->next != head){
+        temp = temp->next;
+    }
+    temp->next = newNode;
+    newNode->next = head;
+    head = newNode;
+   }
+   printf("node inserted in beginning\n");
+}
+void insertNodeAtEnd(int data){
+    struct Node* newNode = createNode(data);
+   if(head == NULL){
+    head = newNode;
+    newNode->next = head;
+   }
+   else{
+    struct Node* temp = head;
+    while(temp->next != head){
+        temp = temp->next;
+    }
+    temp->next = newNode;
+    newNode->next = head;
+
+   }
+   printf("node inserted at end\n"); 
+   
+}
+void insertNodeAtAnyPos(int data, int pos){
+    if(head == NULL && pos == 0)
+      insertNodeInBeg(data);
+    else if(pos == 0 )
+      insertNodeInBeg(data);
+    else{
+        struct Node* temp = head;
+        int i=0;
+        while(i < pos-1){
+            temp = temp->next;
+            i++;   
+        }
+        if(i != pos-1)
+          printf("invalid position\n");
+        else if(temp->next == head && i == pos-1){
+            insertNodeAtEnd(data);
+        }
+        else{
+            struct Node* newNode = createNode(data);
+            newNode->next = temp->next;
+            temp->next = newNode;
+        }
+
+    }
+}
+void deleteNodeFromBeg(){
+   
+}
+void deleteNodeFromEnd(){
+   
+}
+void deleteNodeFromAnyPos(int pos){
+   
+    
+}
+void search(int value){
+    if(head == NULL){
+        printf("list id empty\n");
+    }
+    else{
+        struct Node* temp = head;
+        do{
+            if(temp->data = value){
+                printf("found\n");
+                return;
+            }
+            temp = temp->next;
+
+        }while(temp != head);
+        printf("Not found\n");
+    }
+}
+void displaylist(){
+    if(head == NULL){
+        printf("list id empty\n");
+    }
+    else{
+        struct Node* temp = head;
+        do{
+            printf("%d ",temp->data);
+            temp = temp->next;
+        }while(temp != head);
+        printf("\n");
+    }
+}
+int main(){
+     while(1){
+        printf("\n***Circular Singly linked list***\n");
+        printf("1. insert in beginning\n");
+        printf("2. insert at end\n");
+        printf("3. insert at specified position\n");
+        printf("4. delete from beginning\n");
+        printf("5. delete from end\n");
+        printf("6. delete from specified position\n");
+        printf("7. display list\n");
+        printf("8. search element in list\n");
+        printf("9. exit\n");
+        int choice,data,pos;
+        printf("enter choice: ");
+        scanf("%d",&choice);
+        switch(choice){
+             case 1:
+                printf("Enter data: ");
+                scanf("%d", &data);
+                insertNodeInBeg(data);
+                break;
+            case 2:
+                printf("Enter data: ");
+                scanf("%d", &data);
+                insertNodeAtEnd(data);
+                break;
+            case 3:
+                printf("Enter data: ");
+                scanf("%d", &data);
+                printf("Enter position: ");
+                scanf("%d", &pos);
+                insertNodeAtAnyPos(data, pos);
+                break;
+            case 4:
+                deleteNodeFromBeg();
+                break;
+            case 5:
+                deleteNodeFromEnd();
+                break;
+            case 6:
+                printf("enter position: ");
+                scanf("%d",&pos);
+                deleteNodeFromAnyPos(pos);
+              
+                break;
+            case 7:
+                displaylist();
+                break;
+            case 8:
+                printf("enter searching element: ");
+                scanf("%d",&data);
+                search(data);
+
+                break;
+            case 9:
+                exit(0);
+            default:
+                printf("Invalid choice\n");
+
+        }
+    }
+    return 0;
+}
